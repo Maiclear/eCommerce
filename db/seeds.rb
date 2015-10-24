@@ -37,7 +37,8 @@ reviews= []
 
 (1..20).each do |r|
   reviews << Review.create(
-                           content: Faker::Lorem.paragraph(3)
+                           content: Faker::Lorem.paragraph(3),
+                           product: products[rand(products.length)]
                            )
 end
 
