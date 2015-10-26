@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Product.destroy_all
 Review.destroy_all
-# Category.destroy_all
+Category.destroy_all
 
 
 
@@ -42,9 +42,10 @@ reviews= []
                            )
 end
 
-# categories=[]
+categories=[]
 
-# (1..10).each do |r|
-#   categories << Category.create(
-#                                 name: Faker::Commerce.department
-#                                 )
+(1..10).each do |r|
+  categories << Category.create(
+                                name: Faker::Commerce.department
+                                )
+end
