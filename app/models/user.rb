@@ -1,11 +1,18 @@
 class User < ActiveRecord::Base
   before_save :default_role
+  has_many :products, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   enum role: [:admin, :client, :guest]
+
+
+
+  validates :username, uniqueness: { case_sensitive: false }
+
 
 
   def default_role
