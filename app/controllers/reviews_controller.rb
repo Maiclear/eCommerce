@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
     @reviews = @product.reviews
+    @review.user = current_user if user_signed_in?
     # @review = @product.reviews.build(review_params)
     # @review.user = current_user
     # @review.save
