@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+  before_action :require_admin
   before_action :set_admin_order, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/orders
