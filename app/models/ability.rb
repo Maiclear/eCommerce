@@ -10,8 +10,8 @@ class Ability
         can :create, Review
         can :update, Review, user_id: user.id
         can :destroy, Review, user_id: user.id
-        #can [:set_genre, :set_genres], Movie
-        #can :like, [Movie, Review]
+        #can [:set_category, :set_category], Product
+        can :like, [Product, Review]
     else
         can :read, :all
     end

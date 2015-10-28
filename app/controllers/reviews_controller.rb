@@ -14,6 +14,20 @@ class ReviewsController < ApplicationController
     redirect_to @post
   end
 
+  def like
+    @product = Product.find(params[:product_id])
+    @review = Review.find(params[:id])
+    @like = @review.likes.build(user: current_user)
+
+    if @review.liked_by? current_user
+       @review.remove_like current_user
+       redirect_to @product, notice: 'Tu like a sido eliminado :('
+    elsif @like.save
+      redirect_to @product, notice: 'Gracias por tu like :D'
+    else
+      redirect_to @product, notice: 'Tu like no se ha guardado :('
+    end
+  end
 
   private
 

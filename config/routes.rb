@@ -4,8 +4,22 @@ Rails.application.routes.draw do
 
   get 'reviews/show'
 
-  resources :products
+  resources :products do
+    resources :reviews, only: [:create] do
+      member do
+        get 'like'
+      end
+    end
 
+    member do
+      post 'set_category'
+      get 'like'
+    end
+
+    collection do
+      post 'set_categories'
+    end
+  end
 
   root 'products#index'
   # The priority is based upon order of creation: first created -> highest priority.
