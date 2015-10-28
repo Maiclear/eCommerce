@@ -19,10 +19,21 @@ class User < ActiveRecord::Base
 
 
   validates :user_name, uniqueness: { case_sensitive: false }
-
+  validate :validate_username
 
 
   def default_role
   self.role ||= 2
   end
+
+  def validate_username
+    if User.where(email: user_name).exists?
+      errors.add(:user_name, :invalid)
+    end
+  end
+
+  def to_s
+    "#{self.name} #{self.last_name}"
+  end
+
 end

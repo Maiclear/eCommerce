@@ -15,6 +15,7 @@ class Product < ActiveRecord::Base
   validates :price, presence: true
   validates :stock, presence: true
 
+
   def remove_like user
     self.likes.where(user: user).first.delete
   end
