@@ -7,8 +7,8 @@ class Ability
         can :manage, :all
     elsif user.client?
         can :read, :all
-        can :create, :all
-        can :update, [Product, Review]
+        can :create, Review
+        can :update, Review, user_id: user.id
         can :destroy, Review, user_id: user.id
         #can [:set_genre, :set_genres], Movie
         #can :like, [Movie, Review]
