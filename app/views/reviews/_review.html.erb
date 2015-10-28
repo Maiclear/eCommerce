@@ -1,14 +1,14 @@
 
-<h2>Reviews de los Productos</h2>
+
 <hr>
 <p><small>Creado hace <%= time_tag review.created_at, time_ago_in_words(review.created_at) %></small></p>
 <p><%= review.content %></p>
 <small>by: <%= review.user %></small>
 
 <% if can? :like, Review %>
-	<p>Likes: <strong> <%= @review.likes.count %></strong></p>
+	<p>Likes: <strong> <%= review.likes.count %></strong></p>
 	<p>Me gusta:
-		<% unless @review.liked_by? current_user %>
+		<% unless review.liked_by? current_user %>
 			<%= link_to 'Me Gusta', like_product_review_path(@product, review)  %>
 		<% else %>
 			<%= link_to 'Deshacer Me gusta', like_product_review_path(@product, review)  %>

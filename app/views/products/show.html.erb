@@ -20,6 +20,11 @@
   <%= @product.stock %>
 </p>
 
+<p>
+  <strong>Categoría:</strong>
+  <%= @product.category %>
+</p>
+
 <% if can? :edit, @product %>
 	<%= link_to 'Edit', edit_product_path(@product) %> |
 <% end %>
@@ -34,5 +39,7 @@
 <% if can? :create, Review %>
 	<%= render partial: 'reviews/form' %>
 <% end %>
+
+<h2>Reviews de los Productos</h2>
 
 <%= render partial: 'reviews/review', collection: @reviews %>

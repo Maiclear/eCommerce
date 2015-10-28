@@ -10,9 +10,9 @@ class User < ActiveRecord::Base
   has_many :products, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
-  has_many :likes, as: :likeable
-  has_many :product_likes, through: :likes, source: :product
-  has_many :review_likes, through: :likes, source: :review
+  has_many :likes
+  has_many :product_likes, through: :likes, source: :Likeable , source_type: 'Product'
+  has_many :review_likes, through: :likes, source: :likeable, source_type: 'Review'
 
   enum role: [:admin, :client, :guest]
 
