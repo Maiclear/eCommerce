@@ -2,3 +2,12 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+.product_image {
+	width: 200px;
+}
+
+
+.product_image_form{
+	width: 100px;
+}

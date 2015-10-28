@@ -16,6 +16,7 @@ class Product < ActiveRecord::Base
   validates :price, presence: true
   validates :stock, presence: true
 
+  mount_uploader :image, ImageUploader
 
   def remove_like user
     self.likes.where(user: user).first.delete
