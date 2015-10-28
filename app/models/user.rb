@@ -17,13 +17,13 @@ class User < ActiveRecord::Base
   enum role: [:admin, :client, :guest]
 
 
-
+  validates :name, :last_name, :user_name , presence: true
   validates :user_name, uniqueness: { case_sensitive: false }
   validate :validate_username
 
 
   def default_role
-  self.role ||= 2
+    self.role ||= 1
   end
 
   def validate_username
