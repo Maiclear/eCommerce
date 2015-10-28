@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
 
   has_many :likes, as: :likeable
-  has_many :user_likes, through: :likes, source: :use
+  has_many :user_likes, through: :likes, source: :user
 
 
   has_many :product_orders
