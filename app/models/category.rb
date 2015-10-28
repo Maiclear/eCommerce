@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
-  has_many :product_categories
-  has_many :product, through: :product_categories
+
+  has_many :products
 
   def to_s
     self.name

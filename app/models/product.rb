@@ -1,10 +1,8 @@
 class Product < ActiveRecord::Base
   belongs_to :user
+  belongs_to :category
 
   has_many :reviews, dependent: :destroy
-
-  has_many :product_categories
-  has_many :category, through: :product_categories
 
   has_many :likes, as: :likeable
   has_many :user_likes, through: :likes, source: :user
