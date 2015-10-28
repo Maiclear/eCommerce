@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get    "account" => "devise/registrations#edit",   as: :edit_user_registration
   end
 
-  resources :products do
+  resources :products, only: [:index, :show] do
     resources :reviews, only: [:create] do
       member do
         get 'like'
@@ -28,6 +28,15 @@ Rails.application.routes.draw do
       #post 'set_categories'
     end
   end
+
+  namespace :admin do
+    resources :products
+    resources :orders
+    resources :users
+
+    get '/', to: 'pages#index'
+  end
+
 
   root 'products#index'
   # The priority is based upon order of creation: first created -> highest priority.

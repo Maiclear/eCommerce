@@ -15,4 +15,9 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.for(:sign_up) << [:name, :last_name, :user_name]
       devise_parameter_sanitizer.for(:account_update) << [:name, :last_name, :user_name]
     end
+
+    def require_admin
+      authenticate_user!
+      redirect_to root_path unless current_user.admin?
+    end
 end
