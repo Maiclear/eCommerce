@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :product_likes, through: :likes, source: :Likeable , source_type: 'Product'
   has_many :review_likes, through: :likes, source: :likeable, source_type: 'Review'
 
+  has_many :orders
+
   enum role: [:admin, :client, :guest]
 
 
