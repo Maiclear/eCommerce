@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @reviews = @product.reviews
+    @reviews = @product.reviews.reverse
   end
 
   # GET /products/new
